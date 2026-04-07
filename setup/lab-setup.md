@@ -148,9 +148,6 @@ Place files in:
 
 C:\Sysmon\
 
-📸 Screenshot:
-../screenshots/setup/sysmon-download.png
-
 ---
 
 ## ⚙️ Step 2: Install Sysmon
@@ -172,8 +169,11 @@ OR:
 
 Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational"
 
-📸 Screenshot:
-../screenshot/sysmon-logs.png
+## 📸 Setup Screenshots
+
+<p>
+  <img src="../screenshot/sysmon-logs.png" width="70%" />
+</p>
 
 ---
 
@@ -213,8 +213,11 @@ http://192.168.56.10:8000
 Login:
 admin / password set during install
 
-📸 Screenshot:
-../screenshot/splunk-dashboard.png
+## 📸 Setup Screenshots
+
+<p>
+  <img src="../screenshot/splunk-dashboard.png" width="70%" />
+</p>
 
 ---
 
@@ -225,8 +228,11 @@ Settings → Forwarding and Receiving → Receive Data
 Add port:
 9997
 
-📸 Screenshot:
-../screenshot/splunk-port.png
+## 📸 Setup Screenshots
+
+<p>
+  <img src="../screenshot/splunk-port.png" width="70%" />
+</p>
 
 ---
 
@@ -248,8 +254,10 @@ Set:
 ## ⚙️ Step 9: Configure Forwarding
 
 splunk add forward-server 192.168.56.10:9997
+
 Add a file at path C:\Program Files\SplunkUniversalForwarder\etc\system\local
 Create a inputs.conf file
+
 📂 File Content:  
 👉 `setup/input.conf.`
 
@@ -270,8 +278,11 @@ Expected:
 - 4625  
 - Sysmon logs  
 
-📸 Screenshot:
-../screenshot/splunk-logs.png
+## 📸 Setup Screenshots
+
+<p>
+  <img src="../screenshot/splunk-logs.png" width="70%" />
+</p>
 
 ---
 

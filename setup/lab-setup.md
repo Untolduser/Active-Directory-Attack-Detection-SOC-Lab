@@ -1,23 +1,119 @@
-# Lab Setup
+# 🛠️ Active Directory SOC Lab – Complete Setup Guide
 
-## Network
-All machines configured on same network with static IP.
+## 🎯 Objective
+This lab simulates a real-world Active Directory (AD) environment to perform attack simulations and detect malicious activity using Splunk SIEM and Sysmon telemetry.
 
-## Active Directory
+---
+
+## 🏗️ Lab Environment
+
+| System | Role | IP Address |
+|--------|------|-----------|
+| Kali Linux | Attacker | 192.168.56.250 |
+| Windows 10 | Victim | 192.168.56.100 |
+| Windows Server 2019 | Domain Controller | 192.168.56.7 |
+| Ubuntu Server | Splunk SIEM | 192.168.56.10 |
+
+Domain: hettilava.local
+
+---
+
+## 🌐 Network Configuration
+- Use Host-Only / Internal Network
+- Assign static IPs
+- Set DNS to 192.168.56.7
+
+Verify:
+ping 192.168.56.7
+ping 192.168.56.10
+
+Screenshot: screenshots/setup/network-connectivity.png
+
+---
+
+## 🏢 Active Directory Setup
+
 Install AD:
-Install-WindowsFeature AD-Domain-Services
+Install-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
 
-Create domain:
+Promote:
 Install-ADDSForest -DomainName "hettilava.local"
 
-## Sysmon
+Create users:
+net user user1 Pass@123 /add /domain
+net user user2 Pass@123 /add /domain
+
+Screenshot: screenshots/setup/ad-users.png
+
+---
+
+## 💻 Domain Join
+
+- Join Windows 10 to domain: hettilava.local
+
+Verify:
+whoami
+
+Expected:
+hettilava\user1
+
+Screenshot: screenshots/setup/domain-join.png
+
+---
+
+## 📊 Sysmon Setup
+
+Install:
 sysmon64.exe -i sysmonconfig.xml
 
-## Splunk
-Install Splunk and enable port 9997
+Verify:
+Get-WinEvent -LogName "Microsoft-Windows-Sysmon/Operational"
 
-## Forwarder
+Screenshot: screenshots/setup/sysmon-logs.png
+
+---
+
+## 📡 Splunk Setup
+
+Install:
+wget -O splunk.deb <download_link>
+sudo dpkg -i splunk.deb
+sudo /opt/splunk/bin/splunk start --accept-license
+
+Enable port 9997
+
+Access:
+http://192.168.56.10:8000
+
+Screenshot: screenshots/setup/splunk-dashboard.png
+
+---
+
+## 🔁 Forwarder Setup
+
 splunk add forward-server 192.168.56.10:9997
+splunk add monitor C:\Windows\System32\winevt\Logs\
 
-## Validation
+---
+
+## 📥 Log Verification
+
 index=wineventlog
+
+Screenshot: screenshots/setup/splunk-logs.png
+
+---
+
+## ⚠️ Troubleshooting
+
+Sysmon:
+Get-Service sysmon
+
+Ubuntu IP:
+sudo nano /etc/netplan/*.yaml
+sudo netplan apply
+
+---
+
+## 🔐 Note
+Lab is isolated. Use only for educational purposes.

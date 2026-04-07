@@ -30,9 +30,8 @@ ping 192.168.56.10
 ## 📸 Setup Screenshots
 
 <p align="center">
-  <img src="../screenshot/VM_NAT_Network.png" width="33%" />
-  <img src="../screenshots/" width="30%" />
-  <img src="../screenshots/" width="30%" />
+  <img src="../screenshot/VM_NAT_Network.png" width="50%" />
+  <img src="../screenshot/network_ping.png" width="50%" />
 </p>
 
 ---

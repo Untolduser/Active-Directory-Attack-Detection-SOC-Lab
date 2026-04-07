@@ -249,8 +249,12 @@ Set:
 
 splunk add forward-server 192.168.56.10:9997
 Add a file at path C:\Program Files\SplunkUniversalForwarder\etc\system\local
-File Content:
+Create a inputs.conf file
+📂 File Content:  
+👉 `setup/input.conf.`
 
+In cmd path C:\Program Files\SplunkUniversalForwarder\bin run:
+1. .\splunk.exe restart
 ---
 
 # 📥 PART 4: Verification
@@ -259,7 +263,7 @@ File Content:
 
 ## 🔍 Step 10: Check Logs
 
-index=wineventlog
+index=endpoint
 
 Expected:
 - 4624  
@@ -267,7 +271,7 @@ Expected:
 - Sysmon logs  
 
 📸 Screenshot:
-../screenshots/setup/splunk-logs.png
+../screenshot/splunk-logs.png
 
 ---
 
@@ -293,50 +297,3 @@ Check port 9997
 
 Lab is isolated and for educational use only.
 
-
-
-
-## 📡 Splunk Setup
-
-Install:
-wget -O splunk.deb <download_link>
-sudo dpkg -i splunk.deb
-sudo /opt/splunk/bin/splunk start --accept-license
-
-Enable port 9997
-
-Access:
-http://192.168.56.10:8000
-
-Screenshot: screenshots/setup/splunk-dashboard.png
-
----
-
-## 🔁 Forwarder Setup
-
-splunk add forward-server 192.168.56.10:9997
-splunk add monitor C:\Windows\System32\winevt\Logs\
-
----
-
-## 📥 Log Verification
-
-index=wineventlog
-
-Screenshot: screenshots/setup/splunk-logs.png
-
----
-
-## ⚠️ Troubleshooting
-
-Sysmon:
-Get-Service sysmon
-
-Ubuntu IP:
-sudo nano /etc/netplan/*.yaml
-sudo netplan apply
-
----
-
-## 🔐 Note
-Lab is isolated. Use only for educational purposes.

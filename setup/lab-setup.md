@@ -19,7 +19,7 @@ Domain: hettilava.local
 ---
 
 ## 🌐 Network Configuration
-- Use Host-Only / Internal Network
+- Use Internal Network
 - Assign static IPs
 - Set DNS to 192.168.56.7
 
@@ -27,7 +27,13 @@ Verify:
 ping 192.168.56.7
 ping 192.168.56.10
 
-Screenshot: screenshots/setup/network-connectivity.png
+## 📸 Setup Screenshots
+
+<p align="center">
+  <img src="../screenshots/" width="30%" />
+  <img src="../screenshots/" width="30%" />
+  <img src="../screenshots/" width="30%" />
+</p>
 
 ---
 

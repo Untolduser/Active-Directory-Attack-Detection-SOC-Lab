@@ -74,7 +74,7 @@ Invoke-AtomicTest T1136.001 -ShowDetails
 **What it does:** Creates a local user account using `net user /add`
 
 ```powershell
-Invoke-AtomicTest T1136.001 -TestNumbers 1
+Invoke-AtomicTest T1136.001 -TestNumbers 4
 ```
 
 **Default parameters used by Atomic:**
@@ -87,7 +87,7 @@ Invoke-AtomicTest T1136.001 -TestNumbers 1
 **Run with custom parameters:**
 
 ```powershell
-Invoke-AtomicTest T1136.001 -TestNumbers 1 -InputArgs @{
+Invoke-AtomicTest T1136.001 -TestNumbers 4 -InputArgs @{
     username = "backdoor"
     password  = "P@ssw0rd123!"
 }
@@ -102,7 +102,7 @@ Invoke-AtomicTest T1136.001 -TestNumbers 1 -InputArgs @{
 **What it does:** Creates a local account with a name designed to blend in with built-in system accounts
 
 ```powershell
-Invoke-AtomicTest T1136.001 -TestNumbers 2
+Invoke-AtomicTest T1136.001 -TestNumbers 5
 ```
 
 **Expected trigger:** Windows Security **Event ID 4720**
@@ -114,7 +114,7 @@ Invoke-AtomicTest T1136.001 -TestNumbers 2
 **What it does:** Uses the `New-LocalUser` PowerShell cmdlet instead of net.exe — avoids net.exe-based detections
 
 ```powershell
-Invoke-AtomicTest T1136.001 -TestNumbers 3
+Invoke-AtomicTest T1136.001 -TestNumbers 9
 ```
 
 **Expected trigger:** Windows Security **Event ID 4720** + Sysmon **Event ID 1** (powershell.exe process)
@@ -124,9 +124,9 @@ Invoke-AtomicTest T1136.001 -TestNumbers 3
 ### Cleanup after all tests
 
 ```powershell
-Invoke-AtomicTest T1136.001 -TestNumbers 1 -Cleanup
-Invoke-AtomicTest T1136.001 -TestNumbers 2 -Cleanup
-Invoke-AtomicTest T1136.001 -TestNumbers 3 -Cleanup
+Invoke-AtomicTest T1136.001 -TestNumbers 4 -Cleanup
+Invoke-AtomicTest T1136.001 -TestNumbers 5 -Cleanup
+Invoke-AtomicTest T1136.001 -TestNumbers 9 -Cleanup
 ```
 
 ---
@@ -203,8 +203,7 @@ index=wineventlog OR index=sysmon
 
 - `logs/event_4720_account_created.json` — Sample Event ID 4720 raw log
 - `logs/event_4732_admin_group_add.json` — Sample Event ID 4732 raw log
-- `logs/sysmon_event1_netexe.json` — Sysmon process creation for net.exe
-- `screenshots/` — Place your Atomic execution + Splunk detection screenshots here
+- `screenshot/attacks/T1136-Accout-Creation` — Place your Atomic execution + Splunk detection screenshots here
 
 ---
 

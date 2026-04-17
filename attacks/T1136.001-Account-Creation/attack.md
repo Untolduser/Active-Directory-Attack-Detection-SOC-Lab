@@ -67,7 +67,7 @@ Import-Module "C:\AtomicRedTeam\invoke-atomicredteam\Invoke-AtomicRedTeam.psd1" 
 Invoke-AtomicTest T1136.001 -ShowDetails
 ```
 
-![Alt Text](screenshot/attacks/T1136-Accout-Creation/T1136-Accout-Creation-SD.png)
+![Alt Text](Active-Directory-Attack-Detection-SOC-Lab/screenshot/attacks/T1136-Accout-Creation/T1136-Accout-Creation-SD.png)
 
 ---
 
@@ -94,7 +94,9 @@ Invoke-AtomicTest T1136.001 -TestNumbers 4 -InputArgs @{
     password  = "P@ssw0rd123!"
 }
 ```
+
 ![Alt Text](screenshot/attacks/T1136-Accout-Creation/T1136-Accout-Creation-4.png)
+
 **Expected trigger:** Windows Security **Event ID 4720**
 ---
 

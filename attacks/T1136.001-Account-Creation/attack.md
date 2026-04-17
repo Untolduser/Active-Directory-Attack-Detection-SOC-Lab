@@ -210,9 +210,9 @@ index=wineventlog OR index=sysmon
 
 ## Evidence & Logs
 
-- `logs/event_4720_account_created.json` — Sample Event ID 4720 raw log
-- `logs/event_4732_admin_group_add.json` — Sample Event ID 4732 raw log
-- `screenshot/attacks/T1136-Accout-Creation` — Place your Atomic execution + Splunk detection screenshots here
+![Alt Text](/screenshot/attacks/T1136-Accout-Creation/T1136-Accout-Creation-EventID.png)
+
+![Alt Text](/screenshot/attacks/T1136-Accout-Creation/T1136-Accout-Creation-Creator.png)
 
 ---
 
